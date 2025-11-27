@@ -18,9 +18,9 @@ function Foooter() {
           <div className="md:col-span-1 p-2">
             {/* news letter */}
             <h1 className='text-xl font-bold m-3'>News Letter</h1>
-            <div className='m-0'>
-              <input className='bg-white rounded w-75 text-black placeholder-gray-500 p-2 form-control' type="email" placeholder=' Your email'/>
-              <button className='bg-orange-400 text-blue-950 p-3 rounded m-0'> <FaArrowRight/></button>
+            <div className='flex my-5'>
+              <input className='bg-white rounded-l-md w-75 text-black placeholder-gray-500 p-2 form-control' type="email" placeholder=' Your email'/>
+              <button className='bg-orange-400 text-blue-950 p-3 rounded-r-md m-0'> <FaArrowRight/></button>
             </div>
           </div>
 
@@ -38,7 +38,7 @@ function Foooter() {
         </div>
       </div>
         <div className="bg-black text-white w-min-screen text-center">
-           <span>copyright c 2025 All rights reserved | this website is developed by Nashif !</span>
+           <span>copyright &copy; 2025 All rights reserved | this website is developed by Nashif !</span>
         </div>
     </>
   )
