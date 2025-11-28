@@ -24,9 +24,9 @@ function Header() {
       </div>
       {/* login btn */}
       <div className="md:flex justify-end items-center hidden">
-        <a href="https://www.instagram.com/nashif.me" target='_blank'> <FaInstagram/> </a>
-        <a href="https://www.instagram.com/nashif.me" target='_blank'> <FaFacebook className='mx-2'/> </a>
-        <a href="https://www.instagram.com/nashif.me" target='_blank'> <FaXTwitter/> </a>
+        <a href="https://www.instagram.com/nashif.me" target='_blank'> <FaInstagram className=' hover:text-green-500 text-xl'/> </a>
+        <a href="https://www.instagram.com/nashif.me" target='_blank'> <FaFacebook className='mx-2  hover:text-blue-600 text-xl'/> </a>
+        <a href="https://www.instagram.com/nashif.me" target='_blank'> <FaXTwitter className='text-xl  hover:text-blue-800'/> </a>
         <Link to={'/login'} className='ms-4 border rounded p-2 hover:bg-black hover:text-white flex items-center'><FaUser className='me-1'/> Login</Link>
       </div>
     </div>

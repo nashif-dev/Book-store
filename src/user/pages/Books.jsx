@@ -50,7 +50,7 @@ function Books() {
               {/* duplicate book card div */}
               <div className="p-3 mx-4 w-fit flex justify-center">
                 <div className="flex justify-center items-center flex-col mt-4 shadow-2xl rounded p-3 mb-5 md:mb-0 ">
-                  <img className='' src="/b1.jpg" alt="BOOK" />
+                  <img className='md:w-75 w-80' src="/b1.jpg" alt="BOOK" />
                   <h3 className='text-blue-600 font-bold text-lg'>author</h3>
                   <h4 className='text-lg'>title</h4>
                   <Link to={'/books/:id/view'} className='bg-black text-white mt-2 py-2 px-4 rounded text-xl font-semibold'> view </Link>             
