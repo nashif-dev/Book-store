@@ -4,7 +4,7 @@ import AdminSidePage from '../components/AdminSidePage'
 import Foooter from '../../components/Foooter'
 
 function AdminCollections() {
-  const [tab, setTab] = useState(1)
+  const [tab, setTab] = useState(1) 
 
   return (
     <div>
