@@ -1,13 +1,33 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Header from '../components/Header'
 import Foooter from '../../components/Foooter'
 import { FaSearch } from 'react-icons/fa'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { ToastContainer, toast } from 'react-toastify';
+
 
 
 function Home() {
+
+  const navigate = useNavigate()
+  const [searchKey,setSearchKey] = useState("")
+
+  const handleSearch = ()=>{
+    if(!searchKey){
+      toast.warning("Please provide A Book title here!!!")
+    }else if(!sessionStorage.getItem("token")){
+      toast.warning("Please Login to search Book!!!")
+      setTimeout(() => {
+        navigate('/login')
+      }, 2500);
+    }else if(sessionStorage.getItem("token") && searchKey){
+      navigate('/books')
+    }else{
+      toast.error("Something went wrong!!!!")
+    }
+  }
+
   return (
-    
 <>
   <Header/>
   <div className="">
@@ -18,9 +38,8 @@ function Home() {
         <span className='text-2xl font-semibold'>Gift your family and friends a book</span>
         {/* search */}
         <div className="mt-9 flex items center">
-          <input type="text" className='bg-white rounded-2xl w-100 text-black placeholder-gray-500 p-2 ' placeholder='search books here' />
-          <button className='text-gray-500'  style={{marginLeft:'-40px'}}> <FaSearch/> </button>
-        </div>
+<input onChange={e=>setSearchKey(e.target.value)} type="text" className="bg-white rounded-3xl text-black w-100 placeholder-gray-500 p-2" placeholder='Search Books Here'/>
+            <button onClick={handleSearch} className='text-gray-500 ' style={{marginLeft:'-40px'}}><FaSearch /></button>        </div>
       </div>
     </div>
     {/* new arrivals */}
@@ -89,6 +108,7 @@ function Home() {
     </section>
   </div>
   <Foooter/>
+  <ToastContainer position="top-center" autoClose={2000} theme="colored" />
 </>
   )
 }

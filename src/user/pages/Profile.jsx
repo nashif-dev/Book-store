@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Foooter from '../../components/Foooter'
 import Header from '../components/Header'
 import { FaCircleCheck } from 'react-icons/fa6'
@@ -10,6 +10,17 @@ import BookStatus from '../components/BookStatus'
 
 function Profile() {
   const [tab,setTab]=useState(1)
+  const [dp,setDp]=useState("")
+  const [username,setUsername]=useState("")
+  console.log(dp);
+  console.log(username);
+
+  useEffect(()=>{
+    if(sessionStorage.getItem('token')&&sessionStorage.getItem("user")){
+      const user = JSON.parse(sessionStorage.getItem("user"))
+    }
+  })
+  
   return (
     <div>
       <Header/>
@@ -17,7 +28,7 @@ function Profile() {
       <div style={{height:'200px'}} className="bg-black"></div>
       {/* profile image */}
       <div style={{width:'230px', height:'230px',borderRadius:'50%',marginLeft:'70px',marginTop:'-130px' }} className="bg-white p-3">
-        <img style={{width:'200px', height:'200px',borderRadius:'50%'}} src="/user1.jpg" alt="" />
+        <img style={{width:'200px', height:'200px',borderRadius:'50%'}} src={dp?dp:"/user1.jpg"} alt="" />
       </div>
       {/* name and edit block */}
       <div className="md:flex justify-between items-center px-20 my-5">
