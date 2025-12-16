@@ -32,7 +32,7 @@ function Profile() {
       </div>
       {/* name and edit block */}
       <div className="md:flex justify-between items-center px-20 my-5">
-        <h1 className='flex text-2xl font-bold items-center '>Username <FaCircleCheck className='text-blue-500 ms-3'/></h1>
+        <h1 className='flex text-2xl font-bold items-center '>{username} <FaCircleCheck className='text-blue-500 ms-3'/></h1>
         <Edit/>
       </div>
       <p className="text-justify md:px-20 px-5 my-5 text-lg">

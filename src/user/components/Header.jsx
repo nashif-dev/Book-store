@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { FaBars, FaFacebook, FaInstagram,  FaUser } from 'react-icons/fa'
+import { FaAddressCard, FaBars, FaFacebook, FaInstagram, FaPowerOff, FaUser,  } from 'react-icons/fa'
 import { FaXTwitter } from 'react-icons/fa6'
 import { Link } from 'react-router-dom'
 
