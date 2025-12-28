@@ -1,80 +1,71 @@
-import React, { useEffect, useState } from 'react'
-import Foooter from '../../components/Foooter'
+import React, { useState } from 'react'
 import Header from '../components/Header'
+import Footer from '../../components/Footer'
 import { FaCircleCheck } from 'react-icons/fa6'
 import Edit from '../components/Edit'
 import SellBook from '../components/SellBook'
-import Purchase from '../components/Purchase'
 import BookStatus from '../components/BookStatus'
-
+import Purchase from '../components/Purchase'
+import { useEffect } from 'react'
+import serverURL from '../../services/serverURL'
 
 function Profile() {
-  const [tab,setTab]=useState(1)
-  const [dp,setDp]=useState("")
-  const [username,setUsername]=useState("")
+
+  const [tab,setTab] = useState(1)
+  const [dp,setDp] = useState("")
+  const [username,setUsername] = useState("")
   console.log(dp);
   console.log(username);
-
-  useEffect(()=>{
-    if(sessionStorage.getItem('token')&&sessionStorage.getItem("user")){
-      const user = JSON.parse(sessionStorage.getItem("user"))
-    }
-  })
   
+  useEffect(()=>{
+    if(sessionStorage.getItem("token") && sessionStorage.getItem("user")){
+      const user = JSON.parse(sessionStorage.getItem("user"))
+      setUsername(user?.username)
+      setDp(user?.picture)
+    }
+  },[])
+  
+
   return (
-    <div>
-      <Header/>
-      {/*  */}
-      <div style={{height:'200px'}} className="bg-black"></div>
-      {/* profile image */}
-      <div style={{width:'230px', height:'230px',borderRadius:'50%',marginLeft:'70px',marginTop:'-130px' }} className="bg-white p-3">
-        <img style={{width:'200px', height:'200px',borderRadius:'50%'}} src={dp?dp:"/user1.jpg"} alt="" />
-      </div>
-      {/* name and edit block */}
-      <div className="md:flex justify-between items-center px-20 my-5">
-        <h1 className='flex text-2xl font-bold items-center '>{username} <FaCircleCheck className='text-blue-500 ms-3'/></h1>
-        <Edit/>
-      </div>
-      <p className="text-justify md:px-20 px-5 my-5 text-lg">
-      Quae sapiente molestiae ullam nesciunt perferendis sint sunt aperiam pariatur, beatae dolor consequuntur blanditiis quas expedita tempore dolorum. Eveniet rem numquam minima alias ducimus possimus, incidunt autem distinctio deleniti iste. Laborum asperiores neque incidunt dicta voluptatem quisquam, omnis voluptate nulla beatae cumque sequi saepe veniam aspernatur provident inventore eveniet dolores expedita fugit dolore cum ducimus! Quod placeat ad reprehenderit tempora.</p>
-      {/* tab with contents */}
-      <div className="md:px-40">
-        <div className="flex justify-center items-center my-8 font-medium text-lg">
-          <p onClick={()=>setTab(1)} className={
-            tab==1?
-            'text-blue-700 border-gray-300 border-t border-l border-r p-2 cursor-pointer'
-            :
-            'border-gray-300 border-b p-2 cursor-pointer'
-           }>sell books</p>
-          <p onClick={()=>setTab(2)} className={
-            tab==2?
-            'text-blue-700 border-gray-300 border-t border-l border-r p-2 cursor-pointer'
-            :
-            'border-gray-300 border-b p-2 cursor-pointer'
-           }>book status</p>
-          <p onClick={()=>setTab(3)} className={
-            tab==3?
-            'text-blue-700 border-gray-300 border-t border-l border-r p-2 cursor-pointer'
-            :
-            'border-gray-300 border-b p-2 cursor-pointer'
-           }>purchase history</p>
-        </div>
-        {
-          tab==1&&
-          <SellBook/>
-        }
-        {
-          tab==2&&
-          <BookStatus/>
-        }
-        {
-          tab==3&&
-          <Purchase/>
-        }
-      </div>
-        <div className="mb-3"></div>
-      <Foooter/>
+    <>
+    <Header/>
+    {/* black div */}
+    <div style={{height:'200px'}} className="bg-black"></div>
+    {/* profile image */}
+    <div style={{width:'230px',height:'230px',borderRadius:'50%',marginLeft:'70px',marginTop:'-130px'}} className='bg-white p-3'>
+        <img style={{width:'200px',height:'200px',borderRadius:'50%'}} src={dp?dp.startsWith("https://lh3.googleusercontent.com/")?dp:`${serverURL}/uploads/${dp}`:"https://img.freepik.com/premium-vector/cute-woman-avatar-profile-vector-illustration_1058532-14592.jpg?w=2000"} alt="profile" />
     </div>
+    {/* name with edit block */}
+    <div className="md:flex justify-between items-center md:px-20 px-5 my-5">
+        <h1 className="text-2xl font-bold flex items-center ">{username} <FaCircleCheck className='text-blue-400 ms-5'/> </h1>
+        <Edit/>
+    </div>
+    <p className="text-justify md:px-20 px-5 my-5">we’re happy to have you here! This is your personal reading space — a place where your favorite authors, wishlist items, reading history, and ongoing book journeys come together. Whether you're exploring new genres, tracking your progress, or managing your latest purchases, everything you need is just a click away. Your reading taste shapes your experience, and the more you explore, the better we tailor recommendations just for you.</p>
+    {/* tabs with contents */}
+    <div className="md:px-40">
+      {/* tabs */}
+      <div className="flex justify-center items-center my-8 font-medium text-lg">
+          <p onClick={()=>setTab(1)} className={tab==1?'text-blue-600 border-gray-200 border-t border-l border-r p-4  cursor-pointer':' border-gray-200 border-b p-4  cursor-pointer'}>Sell Books</p>
+          <p onClick={()=>setTab(2)} className={tab==2?'text-blue-600 border-gray-200 border-t border-l border-r p-4  cursor-pointer':' border-gray-200 border-b p-4  cursor-pointer'}>Book Status</p>
+          <p onClick={()=>setTab(3)} className={tab==3?'text-blue-600 border-gray-200 border-t border-l border-r p-4  cursor-pointer':' border-gray-200 border-b p-4  cursor-pointer'}>Purchase History</p>
+      </div>
+      {/* contents */}
+      {
+      tab==1 &&
+      <SellBook/>
+      }
+      {
+        tab==2 &&
+        <BookStatus/>
+      }
+      {
+      tab==3 &&
+      <Purchase/>
+      }
+    </div>
+
+    <Footer/>
+    </>
   )
 }
 

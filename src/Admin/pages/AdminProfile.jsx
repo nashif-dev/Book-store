@@ -1,64 +1,73 @@
+
 import React from 'react'
-import AdminHeader from '../components/AdminHeader'
-import AdminSidePage from '../components/AdminSidePage'
-import Foooter from '../../components/Foooter'
-import { FaPen } from 'react-icons/fa6'
+import AdminHeader from "../components/AdminHeader";
+import AdminSideBar from "../components/AdminSideBar";
+import Footer from '../../components/Footer';
+import { FaPen } from 'react-icons/fa';
 
 function AdminProfile() {
   return (
-    <div>
-      <AdminHeader />
-      <div className="md:grid grid-cols-5">
-        {/* grid-1 */}
-        <div className="col-span-1"> <AdminSidePage /> </div>
-        {/* grid-4 */}
-        <div className='col-span-4'>
-          
-          <div className="grid grid-cols-2 m-2 p-5">
+     <>
+    <AdminHeader/>
+    <div className='md:grid grid-cols-5' >
+      <div className="col-span-1">
+        <AdminSideBar/>
+      </div>
+      <div className='col-span-4 p-10'>
+        <h1 className="text-center my-5 font-bold text-3xl">Settings</h1>
+        <div className="md:grid grid-cols-2 items-center mt-10 gap-10">
+          {/* text */}
+          <div>
+            <h2 className='text-xl font-bold mb-5'>Welcome to the Admin Settings Panel.</h2> 
+            <p className='text-justify mb-5'>
+              Here, you can customize system preferences, manage account details, configure business settings, and ensure the platform runs smoothly for both users and staff. 
+            </p>
+
+<p className='font-bold mb-2'>
+  👤 Account Settings
   
-            <div className=" flex justify-center flex-col text-center p-3">
-              <h1 className='font-bold text-3xl mb-10'>Settings</h1>
-              <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eveniet numquam, vero quibusdam, non explicabo aspernatur distinctio alias esse iste iusto nobis. Est magni aut blanditiis ullam cumque deleniti iure molestias?
-              Nihil autem ab, rem sint nostrum veritatis officiis optio quisquam eius quis illum sequi maiores quasi ratione debitis, animi dicta. Tempore nobis voluptate nam distinctio in sequi ipsum voluptas neque.
-              Numquam, illum itaque vero omnis amet, in voluptatem ipsa a, ipsum odit quisquam. Aut architecto nostrum repudiandae id, nihil dicta minima nulla modi, quam quo commodi quisquam inventore, delectus natus?
-              Enim commodi eaque nisi pariatur impedit a temporibus vitae magnam assumenda repudiandae, explicabo minima velit quas doloremque nemo minus inventore fugiat sunt molestias. Repellendus illo praesentium maiores illum dignissimos aliquid?</p>
+</p>
+<ul>
+  <li>Profile Information: Update admin name, email, phone number, and profile picture.</li>
+  
+ <li> Login Credentials: Change password or enable Two-Factor Authentication (2FA) for secure access.</li>
+  
+  <li>Activity Logs: View login history, last login time, and device access details.  </li>
+</ul>
+          </div>
+          {/* fomr */}
+          <div className="flex justify-center items-center flex-col  bg-blue-100 p-5 rounded">
+            {/* image */}
+            <label htmlFor="uploadImg" >
+                <input type="file" id='uploadImg' hidden />
+                <img style={{width:'150px',height:'150px',borderRadius:'50%'}} src="https://img.freepik.com/premium-photo/happy-man-ai-generated-portrait-user-profile_1119669-1.jpg" alt="profile" />
+
+              </label>
+              <button style={{marginTop:'-20px'}} className='bg-yellow-300 p-2 text-white rounded'><FaPen/></button>
+            {/* name */}
+            <div className="mt-10 mb-3 w-full px-5">
+              <input type="text" placeholder='Username' className='bg-white p-2 rounded w-full' />
+            </div>
+            {/* password */}
+            <div className="mb-3 w-full px-5">
+              <input type="password" placeholder='New Password' className='bg-white p-2 rounded w-full' />
+            </div>
+            <div className="mb-3 w-full px-5">
+              <input type="password" placeholder='Confirm Password' className='bg-white p-2 rounded w-full' />
             </div>
             
-          <div className="">
-            <div className="flex justify-center items-center flex-col mt-10 bg-blue-100 p-5 rounded">
-                {/* image */}
-                <div className='flex flex-col justify-center items-center w-full my-3 '>
-                  <label htmlFor="uploadImg" className=''>
-                    <input type="file" id='uploadImg' hidden />
-                    <img style={{ width: '150px', height: '150px', borderRadius: '50%' }} src="/user1.jpg" alt="dp"  className='z-10'/>
-                  </label>
-                    <button style={{marginTop:'-30px'}} className="  bg-yellow-300 rounded p-3"><FaPen className='text-2xl'/> </button>
-                </div>
-                {/* name */}
-                <div className="mt-10 mb-3 w-full px-5">
-                  <input type="text" placeholder='Username' className='border bg-white border-gray-300 rounded p-2 w-full' />
-                </div>
-                {/* password */}
-                <div className="mb-3 w-full px-5">
-                  <input type="text" placeholder='New Password' className='border bg-white border-gray-300 rounded p-2 w-full' />
-                </div>
-                <div className=" mb-3 w-full px-5">
-                  <input type="text" placeholder='Confirm Password' className='border bg-white border-gray-300 rounded p-2 w-full' />
-                </div>
-              {/* buttton */}
-                <div className=" mb-3 flex justify-end px-5">
-                  <button className='px-3 py-2 rounded border bg-red-600 hover:bg-white hover:text-red-600'>RESET</button>
-                  <button className='ms-3 px-3 py-2 rounded border bg-green-600 hover:bg-white hover:text-green-600'>SUBMIT</button>
-                </div>
-              </div>
+            
+            {/* button */}
+            <div className="mb-3 flex justify-center px-5 w-full mt-5">
+              <button className='px-3 py-2 rounded border bg-red-600 text-white hover:bg-white hover:border-red-600 hover:text-red-600'>RESET</button>
+               <button className='px-3 py-2 rounded border bg-blue-600 text-white hover:bg-white hover:border-blue-600 hover:text-blue-600 ms-5'>UPDATE</button>
+            </div>
           </div>
         </div>
-  
-        </div>      </div>
-
-
-      <Foooter />
-    </div>
+      </div>
+      </div>
+    <Footer/>
+    </>
   )
 }
 

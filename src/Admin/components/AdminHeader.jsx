@@ -1,26 +1,24 @@
 import React from 'react'
-import { FaPowerOff } from 'react-icons/fa6'
+import { FaPowerOff } from 'react-icons/fa'
 
 function AdminHeader() {
   return (
-    <div>
+    <>
+    {/* header upper part */}
       <div className='flex justify-between items-center p-3 md:px-20'>
-        {/* logo and tite */}
+        {/* logo with titlw */}
         <div className="flex items-center">
-          <img className='h-15 rounded' src="/logo1.jpg" alt="logo" />
-          <h1 className='text-2xl font-bold ms-1'>BOOKSTORE</h1>
+          <img width={'80px'} height={'80px'} src="https://vectorified.com/images/book-icon-png-18.png" alt="logo" />
+          <p className="font-bold text-2xl">BOOKSTORE</p>
         </div>
-        {/* logout button */}
-        <button className='ms-4 text-white bg-black border rounded px-2 py-1 hover:bg-white hover:text-black flex items-center'> <FaPowerOff className='me-2'/>Logout</button>
+        {/* logout */}
+        <button className='bg-black px-3 py-2 border rounded text-white flex items-center hover:bg-white hover:text-black'><FaPowerOff className='me-2'/> LOG OUT</button>
       </div>
-      {/* header loweer part */}
-      <div className="bg-black p-2 ">
-        <marquee behavior="130px" direction="">
-          <p className='text-white'> Welcome, Admin ! you'are all set to  monitor and manage the system , let's get to work</p>
-        </marquee>
+      {/* header lower part */}
+      <div className="bg-black p-2">
+        <marquee><p className="text-white">Welcome, Admin! You're all set to manage and monitor the system. Let’s get into work!</p></marquee>
       </div>
-    </div>
-    
+    </>
   )
 }
 
